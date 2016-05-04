@@ -1,0 +1,20 @@
+I have attached a zip file which contains my deliverables for the challenge.
+
+Manifest:
+UnitFrame.py - automation code
+fandor-test-cases.xls - test case listing
+
+1. Automated tests are written in Python using the Selenium library. unittest is used as the framework.
+2. Both automated and manual tests focus on controls; simple text elements are out-of-scope for integration and regression.
+3. Most of the automated tests are one-offs, but the last couple of tests show an approach of iterating through multiple links.  This approach would make up a greater percentage of a complete test of this page.
+4. Manual Vs. Automated indicates whether the test case is automated or not. Most of these cases could be automated with the possible exception of some of the player ones.
+5. A lot of the automation is based on text elements; IDs would be preferable.  Not many IDs were observed in the code.  At Monitise we recommended that IDs be added to the application code and developers took our recomendation.
+6. Suite and test case handling is deferred; a simple calling statement executes all cases.
+
+Run from DOS command line:
+
+C:>UnitFrame.py
+
+or:
+
+C:>python UnitFrame.py

@@ -233,9 +233,6 @@ class UnitFrame(unittest.TestCase):
 			adaptLink = self.driver.find_element_by_link_text("Adaptation")
 		except NoSuchElementException:
 			self.assertTrue(False)
-		#adaptLink.click()
-		#result = self.tryElementXpath("h1","Adaptation",1)
-		#self.assertTrue(result)
 		try:
 			castLink = self.driver.find_element_by_link_text("Cast & Crew")
 		except NoSuchElementException:

@@ -3,6 +3,7 @@ I have attached a zip file which contains my deliverables for the challenge.
 Manifest:
 UnitFrame.py - automation code
 fandor-test-cases.xls - test case listing
+README - this file
 
 1. Automated tests are written in Python using the Selenium library. unittest is used as the framework.
 2. Both automated and manual tests focus on controls; simple text elements are out-of-scope for integration and regression.
@@ -18,3 +19,7 @@ C:>UnitFrame.py
 or:
 
 C:>python UnitFrame.py
+
+or:
+
+C:>python UnitFrame.py -v

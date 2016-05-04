@@ -1,7 +1,9 @@
 I have attached a zip file which contains my deliverables for the challenge.
 
 Manifest:
-UnitFrame.py - automation code
+UnitFrameC.py - test cases
+callUnitFrameC.py - calling code
+__init__.py - python module file
 fandor-test-cases.xls - test case listing
 README - this file
 
@@ -14,12 +16,12 @@ README - this file
 
 Run from DOS command line:
 
-C:>UnitFrame.py
+C:>callUnitFrameC.py
 
 or:
 
-C:>python UnitFrame.py
+C:>python callUnitFrameC.py
 
 or:
 
-C:>python UnitFrame.py -v
+C:>python callUnitFrameC.py -v

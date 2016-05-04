@@ -12,10 +12,11 @@ import unittest, time, re
 # Test cases are in the form of methods like "testaPage".
 class UnitFrame(unittest.TestCase):
 
-	skip = False
+	skip = True
 	extension = "/films/sita_sings_the_blues#"
 	
 	def setUp(self):
+		"""Setup"""
 		self.driver = webdriver.Firefox()
 		self.driver.implicitly_wait(30)
 		self.base_url = "https://www.fandor.com/"
@@ -37,16 +38,16 @@ class UnitFrame(unittest.TestCase):
 				return False
 			return True
 
-	@unittest.skipIf(skip,"Skipping...")
+	#@unittest.skipIf(skip,"Skipping...")
 	def testaPage(self):
-		#Verify that correct page is invoked by requesting URL
+		"""Verify that correct page is invoked by requesting URL"""
 		self.driver.get(self.base_url + self.extension)
 		assert "Watch Sita Sings the Blues" in self.driver.title
 		return
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testbUtton(self):
-		#Verify that clicking Learn More button brings up pop-up
+		"""Verify that clicking Learn More button brings up pop-up"""
 		self.driver.get(self.base_url + self.extension)
 		buttonLearn = self.driver.find_element_by_xpath("//div[2]/div/button")
 		assert "Learn More" in buttonLearn.text
@@ -67,7 +68,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testcNewrel(self):
-		#Verify that selecting Films: New Releases from dropdown goes to New Releases page
+		"""Verify that selecting Films: New Releases from dropdown goes to New Releases page"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			filmsLink = self.driver.find_element_by_class_name("films-link")
@@ -85,7 +86,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testdAnimated(self):
-		#Verify that selecting Films: Genres: Animated from dropdown / next-level menu goes to Animated page
+		"""Verify that selecting Films: Genres: Animated from dropdown / next-level menu goes to Animated page"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			filmsLink = self.driver.find_element_by_class_name("films-link")
@@ -105,7 +106,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testeName(self):
-		#Verify that clicking logo goes to Home page
+		"""Verify that clicking logo goes to Home page"""
 		self.driver.get(self.base_url + self.extension)
 		nameLogo = self.driver.find_element_by_class_name("name")
 		nameLogo.click()
@@ -115,7 +116,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testfLogin(self):
-		#Verify that Clicking 'Log in' link goes to Log In page
+		"""Verify that Clicking 'Log in' link goes to Log In page"""
 		self.driver.get(self.base_url + self.extension)
 		loginLink = self.driver.find_element_by_xpath("(//a[contains(text(),'Log in')])")
 		loginLink.click()
@@ -125,7 +126,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testgSignup(self):
-		#Verify that Clicking 'Start your free trial today' button goes to Register page
+		"""Verify that Clicking 'Start your free trial today' button goes to Register page"""
 		self.driver.get(self.base_url + self.extension)
 		trialButton = self.driver.find_element_by_xpath("(//a[contains(text(),'Start your free trial today')])[2]")
 		trialButton.click()
@@ -135,7 +136,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testhDirReadMore(self):
-		#Verify that Selecting Nina Paley: READ MORE control reveals text; READ LESS hides text
+		"""Verify that Selecting Nina Paley: READ MORE control reveals text; READ LESS hides text"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			dirMoreLink = self.driver.find_element_by_link_text("READ MORE")
@@ -155,7 +156,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testiTrailerButton(self):
-		#Verify that Trailer button invokes player
+		"""Verify that Trailer button invokes player"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			trailerButton = self.driver.find_element_by_xpath("//button[@type='button']")
@@ -171,7 +172,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testjPlayButton(self):
-		#Verify that Play button invokes player
+		"""Verify that Play button invokes player"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			playButton = self.driver.find_element_by_css_selector("i.fa.fa-play")
@@ -187,7 +188,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testkCast(self):
-		#Verify that Clicking Cast & Crew credit link for Nina goes to Nina profile page
+		"""Verify that Clicking Cast & Crew credit link for Nina goes to Nina profile page"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			castLink = self.driver.find_element_by_link_text("Cast & Crew")
@@ -200,7 +201,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testlGenres(self):
-		#Verify that Clicking Genres Adaptation link goes to Adaptation page
+		"""Verify that Clicking Genres Adaptation link goes to Adaptation page"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			genresLink = self.driver.find_element_by_xpath("(//a[contains(text(),'Genres')])[5]")
@@ -218,34 +219,9 @@ class UnitFrame(unittest.TestCase):
 		self.assertTrue(result)
 		return
 
-	#@unittest.skipIf(skip,"Skipping...")
-	def testqGenresNeg(self):
-		#Verify that Clicking Genres Adaptation link goes to Adaptation page
-		self.driver.get(self.base_url + self.extension)
-		try:
-			genresLink = self.driver.find_element_by_xpath("(//a[contains(text(),'Genres')])[5]")
-		except NoSuchElementException:
-			self.assertTrue(False)
-		for a in range(2):
-			genresLink.send_keys(Keys.ARROW_DOWN)
-		genresLink.click()
-		try:
-			adaptLink = self.driver.find_element_by_link_text("Adaptation")
-		except NoSuchElementException:
-			self.assertTrue(False)
-		try:
-			castLink = self.driver.find_element_by_link_text("Cast & Crew")
-		except NoSuchElementException:
-			self.assertTrue(False)
-		try:
-			adaptLink.click()
-		except NoSuchElementException:
-			self.assertTrue(True)
-		return
-
 	@unittest.skipIf(skip,"Skipping...")
 	def testmFestivals(self):
-		#Verify that Clicking Festivals & Awards tab shows Awards data and links
+		"""Verify that Clicking Festivals & Awards tab shows Awards data and links"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			castLink = self.driver.find_element_by_link_text("Festivals & Awards")
@@ -258,7 +234,7 @@ class UnitFrame(unittest.TestCase):
 			
 	@unittest.skipIf(skip,"Skipping...")
 	def testnRelated(self):
-		#Verify that Clicking Related Articles link goes to Keyframe page (test all links)
+		"""Verify that Clicking Related Articles link goes to Keyframe page (test all links)"""
 		self.driver.get(self.base_url + self.extension)
 		try:
 			relatedLink = self.driver.find_element_by_link_text("Related Articles")
@@ -278,7 +254,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testoFeatured(self):
-		#Verify that Selecting Featured: n from dropdown goes to n page; data driven
+		"""Verify that Selecting Featured: n from dropdown goes to n page; data driven"""
 		sel = ["Spotlights","Criterion Picks","Video Essays"]
 		chk = ["Spotlight","Criterion Collection","Video Essays"]
 		self.driver.get(self.base_url + self.extension)
@@ -298,7 +274,7 @@ class UnitFrame(unittest.TestCase):
 
 	@unittest.skipIf(skip,"Skipping...")
 	def testpJoin(self):
-		#Verify that Clicking 'Join us:' n link goes to n page
+		"""Verify that Clicking 'Join us:' n link goes to n page"""
 		sel = ["Subscribe","Pricing Plans","Gift Subscriptions","Invite a Friend","Educators & Students"]
 		chk = ["Sign up","Your subscription options","Do you love","Share movies you love","Resources and discounts"]
 		hdr = ["h2","h1","h1","h1","h1"]
@@ -314,9 +290,14 @@ class UnitFrame(unittest.TestCase):
 		return
 
 	def tearDown(self):
+		"""Tear-down"""
 		self.driver.quit()
 		self.assertEqual([], self.verificationErrors)
 
 # this is the framework calling code that will execute the entire suite and show results
-if __name__ == "__main__":
-	unittest.main(warnings='ignore')
+#if __name__ == "__main__":
+#	unittest.main(warnings='ignore')
+#	loader = unittest.TestLoader()
+##	sitaRunner = unittest.TextTestRunner(verbosity=2)
+#	sitaSuite = loader.loadTestsFromTestCase(UnitFrame)
+#	sitaRunner.run(sitaSuite)

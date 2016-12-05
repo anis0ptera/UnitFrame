@@ -52,13 +52,10 @@ class UnitFrame(unittest.TestCase):
 		buttonLearn = self.driver.find_element_by_xpath("//div[2]/div/button")
 		assert "Learn More" in buttonLearn.text
 		buttonLearn.click()
-#		Xception = False
 		try:
 			self.driver.find_element_by_id('learn-more-modal')
 		except NoSuchElementException:
 			self.assertTrue(False)
-#			Xception = True
-#		self.assertFalse(Xception)
 		try:
 			closeModal = self.driver.find_element_by_css_selector("#learn-more-modal > a.close-reveal-modal")
 		except NoSuchElementException:
@@ -293,6 +290,7 @@ class UnitFrame(unittest.TestCase):
 		"""Tear-down"""
 		self.driver.quit()
 		self.assertEqual([], self.verificationErrors)
+
 
 # this is the framework calling code that will execute the entire suite and show results
 #if __name__ == "__main__":
